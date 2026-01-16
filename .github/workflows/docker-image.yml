@@ -37,7 +37,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' && secrets.SSH_PRIVATE_KEY != '' && secrets.SERVER_IP != ''
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       SSH_USER: ${{ secrets.SSH_USER }}
@@ -74,6 +74,7 @@ jobs:
         run: npm run build
 
       - name: Set up SSH key
+        if: env.SSH_PRIVATE_KEY != '' && env.SERVER_IP != ''
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
@@ -81,10 +82,12 @@ jobs:
           ssh-keyscan "$SERVER_IP" >> ~/.ssh/known_hosts
 
       - name: Create .env.production from secret
+        if: env.SSH_PRIVATE_KEY != '' && env.SERVER_IP != ''
         run: |
           printf '%s\n' "$ENV_PRODUCTION_FILE" > .env.production
 
       - name: Create deployment package
+        if: env.SSH_PRIVATE_KEY != '' && env.SERVER_IP != ''
         run: |
           tar czf deployment.tar.gz \
             backend/target/*.jar \
@@ -96,11 +99,13 @@ jobs:
             .env.production
 
       - name: Install sshpass and openssh-client
+        if: env.SSH_PRIVATE_KEY != '' && env.SERVER_IP != ''
         run: |
           sudo apt-get update
           sudo apt-get install -y sshpass openssh-client
 
       - name: Copy deployment package to server
+        if: env.SSH_PRIVATE_KEY != '' && env.SERVER_IP != ''
         run: |
           scp -i ~/.ssh/id_rsa \
             -o StrictHostKeyChecking=yes \
@@ -108,6 +113,7 @@ jobs:
             "$SSH_USER@$SERVER_IP:/tmp/"
 
       - name: Deploy on server
+        if: env.SSH_PRIVATE_KEY != '' && env.SERVER_IP != ''
         run: |
           ssh -i ~/.ssh/id_rsa \
             -o StrictHostKeyChecking=yes \
