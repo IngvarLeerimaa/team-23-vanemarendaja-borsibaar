@@ -1,0 +1,64 @@
+# Homework Submission - Team 23
+
+## Repository
+
+**[Link to team Repository](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)**
+
+---
+
+## Pull Requests
+
+| PR # | Title | Author | Merge Strategy | Status |
+|------|-------|--------|----------------|--------|
+| | | | | |
+| | | | | |
+| | | | | |
+
+---
+
+## Merge Conflict
+
+### What caused the conflict
+
+`<to_be_added>`
+
+### Files affected
+
+`<to_be_added>`
+
+### How it was resolved
+
+`<to_be_added>`
+
+---
+
+## Team Member Contributions
+
+### Ingvar Leerimaa (@IngvarLeerimaa)
+- Repository setup and configuration
+- Initial mock up files
+- `<to_be_added>`
+
+### Andrii Lytvyn (@andrewlytvyn)
+- `<to_be_added>`
+
+### Bohdan Podziubanchuk (@Danbog32)
+- `<to_be_added>`
+
+### Olga Tenison (@olgatenison)
+- `<to_be_added>`
+
+### Mahdiyeh Sepehrar (@sepehrar)
+- `<to_be_added>`
+
+---
+
+## Submission Checklist
+
+- [ ] All pull requests linked above
+- [ ] At least two different merge strategies demonstrated
+- [ ] Conflict resolution documented
+- [ ] Each team member contribution listed
+- [ ] TEAM.md updated with merge strategy explanations
+- [ ] All feature branches merged and deleted
+- [ ] Commit history is clean and readable
