@@ -329,8 +329,7 @@ export default function Inventory() {
     }
   };
 
-  const handleDeleteProduct = async (id: string) => {
-    if (!id) return;
+  const handleDeleteProduct = async (id: number) => {
     try {
       const deleteResponse = await fetch(`/api/backend/product/${id}`, {
         method: "DELETE",
@@ -352,6 +351,7 @@ export default function Inventory() {
       }
     }
   };
+
 
   const closeModals = () => {
     setShowAddModal(false);
@@ -746,7 +746,7 @@ export default function Inventory() {
                   })
                 }
                 className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                rows="3"
+                rows={3}
                 placeholder="Product description (optional)"
               />
             </div>
@@ -844,8 +844,8 @@ export default function Inventory() {
             <Button
               className="bg-rose-600 hover:bg-rose-700 text-white"
               onClick={() => {
-                const id = selectedProduct?.productId ?? selectedProduct?.id;
-                if (id) handleDeleteProduct(Number(id));
+               const id = selectedProduct?.productId ?? selectedProduct?.id;
+               if (id) handleDeleteProduct(Number(id));
               }}
             >
               Delete
@@ -959,7 +959,7 @@ export default function Inventory() {
                   setFormData({ ...formData, notes: e.target.value })
                 }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                rows="3"
+                rows={3}
                 placeholder="e.g., Weekly restock"
               />
             </div>
@@ -1034,7 +1034,7 @@ export default function Inventory() {
                   setFormData({ ...formData, notes: e.target.value })
                 }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                rows="3"
+                rows={3}
                 placeholder="e.g., Sold to customer"
               />
             </div>
@@ -1095,7 +1095,7 @@ export default function Inventory() {
                   setFormData({ ...formData, notes: e.target.value })
                 }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                rows="3"
+                rows={3}
                 placeholder="e.g., Inventory correction"
               />
             </div>
