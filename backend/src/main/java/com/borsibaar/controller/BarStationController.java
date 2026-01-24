@@ -6,19 +6,18 @@ import com.borsibaar.entity.User;
 import com.borsibaar.service.BarStationService;
 import com.borsibaar.util.SecurityUtils;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/bar-stations")
 @RequiredArgsConstructor
 public class BarStationController {
 
-    private final BarStationService barStationService;
+  private final BarStationService barStationService;
 
     /**
      * Helper method to get the current user and ensure they are an admin.
@@ -57,8 +56,7 @@ public class BarStationController {
 
     @PutMapping("/{id}")
     public BarStationResponseDto updateStation(
-            @PathVariable Long id,
-            @Valid @RequestBody BarStationRequestDto request) {
+            @PathVariable Long id, @Valid @RequestBody BarStationRequestDto request) {
         User user = getAdminUser(); // only admins can update
         return barStationService.updateStation(user.getOrganizationId(), id, request);
     }
