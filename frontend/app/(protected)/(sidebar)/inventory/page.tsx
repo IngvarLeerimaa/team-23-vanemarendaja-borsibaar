@@ -213,7 +213,6 @@ export default function Inventory() {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          // @ts-expect-error: types aren't imported currently from backend
           productId: selectedProduct.productId,
           quantity: parseFloat(formData.quantity),
           notes: formData.notes,
@@ -234,13 +233,17 @@ export default function Inventory() {
   };
 
   const handleRemoveStock = async () => {
+    if (!selectedProduct) {
+      alert("No product selected");
+      return;
+    }
+
     try {
       const response = await fetch("/api/backend/inventory/remove", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          // @ts-expect-error: types aren't imported currently from backend
           productId: selectedProduct.productId,
           quantity: parseFloat(formData.quantity),
           referenceId: formData.referenceId,
@@ -265,13 +268,17 @@ export default function Inventory() {
   };
 
   const handleAdjustStock = async () => {
+    if (!selectedProduct) {
+      alert("No product selected");
+      return;
+    }
+
     try {
       const response = await fetch("/api/backend/inventory/adjust", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          // @ts-expect-error: types aren't imported currently from backend
           productId: selectedProduct.productId,
           newQuantity: parseFloat(formData.quantity),
           notes: formData.notes,
@@ -393,17 +400,30 @@ export default function Inventory() {
         )
       : inventory;
 
-  // @ts-expect-error: types aren't imported currently from backend
-  const getStockStatus = (quantity) => {
-    const qty = parseFloat(quantity);
-    if (qty === 0)
+  // UI helpers: stock status + numeric parsing (API can return numbers as strings).
+
+  type StockStatus = { color: string; bg: string; label: string };
+
+  const toNumber = (v: number | string): number => {
+    const n = typeof v === "number" ? v : Number(v);
+    return Number.isFinite(n) ? n : NaN;
+  };
+
+  const getStockStatus = (
+    quantity: InventoryItemDto["quantity"],
+  ): StockStatus => {
+    const qty = toNumber(quantity);
+
+    if (!Number.isFinite(qty) || qty <= 0) {
       return { color: "text-red-100", bg: "bg-red-900", label: "Out of Stock" };
-    if (qty < 10)
+    }
+    if (qty < 10) {
       return {
         color: "text-yellow-600",
         bg: "bg-yellow-50",
         label: "Low Stock",
       };
+    }
     return { color: "text-green-100", bg: "bg-green-900", label: "In Stock" };
   };
 
@@ -506,7 +526,6 @@ export default function Inventory() {
                 </tr>
               ) : (
                 filteredInventory.map((item) => {
-                  // @ts-expect-error: types aren't imported currently from backend
                   const status = getStockStatus(item.quantity);
                   return (
                     <tr
@@ -523,28 +542,28 @@ export default function Inventory() {
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="text-lg font-semibold text-gray-300">
-                          {parseFloat(item.basePrice).toFixed(2)}€
+                          {toNumber(item.basePrice).toFixed(2)}€
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="text-lg text-gray-300">
-                          {isNaN(parseFloat(item.minPrice))
+                          {Number.isNaN(toNumber(item.minPrice))
                             ? "--"
-                            : parseFloat(item.minPrice).toFixed(2)}
+                            : toNumber(item.minPrice).toFixed(2)}
                           €
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="text-lg text-gray-300">
-                          {isNaN(parseFloat(item.maxPrice))
+                          {Number.isNaN(toNumber(item.maxPrice))
                             ? "--"
-                            : parseFloat(item.maxPrice).toFixed(2)}
+                            : toNumber(item.maxPrice).toFixed(2)}
                           €
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="text-lg font-semibold text-gray-300">
-                          {parseFloat(item.quantity).toFixed(2)}
+                          {toNumber(item.quantity).toFixed(2)}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center">
