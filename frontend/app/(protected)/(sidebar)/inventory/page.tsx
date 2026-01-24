@@ -95,6 +95,7 @@ export default function Inventory() {
 
       const data: InventoryItemDto[] = await response.json();
       setInventory(data);
+
       setError(null);
     } catch (err) {
       if (err instanceof Error) {
@@ -385,12 +386,12 @@ export default function Inventory() {
     await fetchTransactionHistory(item.productId);
   };
 
-const filteredInventory =
-  searchTerm.trim().length > 0
-    ? inventory.filter((item) =>
-        item.productName.toLowerCase().includes(searchTerm.toLowerCase()),
-      )
-    : inventory;
+  const filteredInventory =
+    searchTerm.trim().length > 0
+      ? inventory.filter((item) =>
+          item.productName.toLowerCase().includes(searchTerm.toLowerCase()),
+        )
+      : inventory;
 
   // @ts-expect-error: types aren't imported currently from backend
   const getStockStatus = (quantity) => {
@@ -469,7 +470,7 @@ const filteredInventory =
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-400">
+              <tr className="border-b border-gray-400 ">
                 <th className="text-left py-3 px-4 font-semibold text-gray-300">
                   Product
                 </th>
@@ -1126,12 +1127,15 @@ const filteredInventory =
                     className="border border-gray-600 rounded-lg p-4 bg-gray-800"
                   >
                     <div className="flex justify-between items-start mb-2">
+                      {/* NOTE: Backend has no "SALE" transaction type yet; removals are ADJUSTMENT with negative quantityChange.
+                      We color those red to indicate outflow without introducing a missing enum. */}
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium ${
                           transaction.transactionType === "PURCHASE" ||
                           transaction.transactionType === "INITIAL"
                             ? "bg-green-900 text-green-100"
-                            : transaction.transactionType === "SALE"
+                            : transaction.transactionType === "ADJUSTMENT" &&
+                                transaction.quantityChange < 0
                               ? "bg-red-900 text-red-100"
                               : "bg-blue-900 text-blue-100"
                         }`}

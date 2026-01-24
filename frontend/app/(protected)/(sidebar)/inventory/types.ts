@@ -18,17 +18,19 @@ export interface CategoryDto {
   dynamicPricing: boolean;
 }
 
+export type InventoryTransactionType = "PURCHASE" | "ADJUSTMENT" | "INITIAL";
+
 export interface InventoryTransactionResponseDto {
   id: number;
   inventoryId: number;
-  transactionType: string;
+  transactionType: InventoryTransactionType;
   quantityChange: number;
   quantityBefore: number;
   quantityAfter: number;
-  referenceId?: string;
-  notes?: string;
+  referenceId?: string | null;
+  notes?: string | null;
   createdBy: string;
-  createdByName?: string;
-  createdByEmail?: string;
+  createdByName?: string | null;
+  createdByEmail?: string | null;
   createdAt: string;
 }
