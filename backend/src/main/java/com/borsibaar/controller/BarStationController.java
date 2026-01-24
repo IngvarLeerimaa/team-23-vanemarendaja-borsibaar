@@ -20,58 +20,52 @@ public class BarStationController {
 
     private final BarStationService barStationService;
 
-    @GetMapping
-    public ResponseEntity<List<BarStationResponseDto>> getAllStations() {
+    /**
+     * Helper method to get the current user and ensure they are an admin.
+     * Reduces repeated admin checks in controller methods.
+     */
+    private User getAdminUser() {
         User user = SecurityUtils.getCurrentUser();
         SecurityUtils.requireAdminRole(user);
-        
-        List<BarStationResponseDto> stations = barStationService.getAllStations(user.getOrganizationId());
-        return ResponseEntity.ok(stations);
+        return user;
+    }
+
+    @GetMapping
+    public List<BarStationResponseDto> getAllStations() {
+        User user = getAdminUser(); // only admins can access
+        return barStationService.getAllStations(user.getOrganizationId());
     }
 
     @GetMapping("/user")
-    public ResponseEntity<List<BarStationResponseDto>> getUserStations() {
-        User user = SecurityUtils.getCurrentUser();
-        
-        List<BarStationResponseDto> stations = barStationService.getUserStations(user.getId(), user.getOrganizationId());
-        return ResponseEntity.ok(stations);
+    public List<BarStationResponseDto> getUserStations() {
+        User user = SecurityUtils.getCurrentUser(); // no admin check here
+        return barStationService.getUserStations(user.getId(), user.getOrganizationId());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BarStationResponseDto> getStationById(@PathVariable Long id) {
-        User user = SecurityUtils.getCurrentUser();
-        
-        BarStationResponseDto station = barStationService.getStationById(user.getOrganizationId(), id);
-        return ResponseEntity.ok(station);
+    public BarStationResponseDto getStationById(@PathVariable Long id) {
+        User user = SecurityUtils.getCurrentUser(); // no admin check here
+        return barStationService.getStationById(user.getOrganizationId(), id);
     }
 
     @PostMapping
     public ResponseEntity<BarStationResponseDto> createStation(@Valid @RequestBody BarStationRequestDto request) {
-        User user = SecurityUtils.getCurrentUser();
-        SecurityUtils.requireAdminRole(user);
-        
+        User user = getAdminUser(); // only admins can create
         BarStationResponseDto station = barStationService.createStation(user.getOrganizationId(), request);
         return ResponseEntity.status(HttpStatus.CREATED).body(station);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BarStationResponseDto> updateStation(
+    public BarStationResponseDto updateStation(
             @PathVariable Long id,
             @Valid @RequestBody BarStationRequestDto request) {
-        User user = SecurityUtils.getCurrentUser();
-        SecurityUtils.requireAdminRole(user);
-        
-        BarStationResponseDto station = barStationService.updateStation(user.getOrganizationId(), id, request);
-        return ResponseEntity.ok(station);
+        User user = getAdminUser(); // only admins can update
+        return barStationService.updateStation(user.getOrganizationId(), id, request);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStation(@PathVariable Long id) {
-        User user = SecurityUtils.getCurrentUser();
-        SecurityUtils.requireAdminRole(user);
-        
+    public void deleteStation(@PathVariable Long id) {
+        User user = getAdminUser(); // only admins can delete
         barStationService.deleteStation(user.getOrganizationId(), id);
-        return ResponseEntity.noContent().build();
     }
 }
-
