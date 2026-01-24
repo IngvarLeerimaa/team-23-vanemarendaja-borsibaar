@@ -1,8 +1,10 @@
 # Team Information
 
 ## Team Name
-
 **Team 23** <i>- to be determined</i>
+
+## Team 23
+<img src="./img/Team23.png" width="200">
 
 ## Team Members
 
@@ -14,7 +16,7 @@
 | Olga Tenison           | [@olgatenison](https://github.com/olgatenison)       | Contributor                  |
 | Mahdiyeh Sepehrar      | [@sepehrar](https://github.com/sepehrar)             | Contributor                  |
 
-**Team Lead / Integrator:** `<to_be_decided>`
+**Team Lead / Integrator:** [Ingvar-V. Leerimaa](https://github.com/IngvarLeerimaa)
 
 **Mentor:** Bahdan Yanovich
 
@@ -131,3 +133,4 @@ _Document any issues faced during merging:_
 
 - [Repository](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)
 - Assignment Deadline: 26.01.2026
+- Homework assignment instructions available at [./homework/Git Homework.pdf](https://github.com/IngvarLeerimaa/team-23-vanemarendaja-borsibaar/blob/develop/homework/Git%20Homework.pdf)

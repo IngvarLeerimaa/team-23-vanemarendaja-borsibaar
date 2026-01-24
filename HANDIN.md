@@ -1,8 +1,4 @@
-# Homework Submission - Team 23
-
-## Repository
-
-**[Link to team Repository](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)**
+# [Homework Submission by Team 23](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)
 
 ---
 
@@ -38,6 +34,8 @@
 
 - Repository setup and configuration
 - Initial mock up files
+
+- Created git conflict with Mahdiyeh Sepehrar / Olga Tenison
 - `<to_be_added>`
 
 ### Andrii Lytvyn (@andrewlytvyn)
