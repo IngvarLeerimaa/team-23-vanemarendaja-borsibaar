@@ -1,8 +1,4 @@
-# Homework Submission - Team 23
-
-## Repository
-
-**[Link to team Repository](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)**
+# [Homework Submission by Team 23](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)
 
 ---
 
@@ -35,7 +31,7 @@
 ## Team Member Contributions
 
 ### Ingvar Leerimaa (@IngvarLeerimaa)
-- Repository setup and configuration
+- Repository setup
 - Initial mock up files
 - `<to_be_added>`
 
