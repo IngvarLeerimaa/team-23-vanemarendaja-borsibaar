@@ -32,7 +32,7 @@ public class AuthService {
         String name = auth.getPrincipal().getAttribute("name");
 
         // Check if user exists or create a new one
-        User user = userRepository.findByEmail(email)
+        User user = userRepository.findByEmailWithRole(email)
                 .orElse(User.builder()
                         .email(email)
                         .name(name)

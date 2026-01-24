@@ -1,0 +1,13 @@
+app:
+  cors:
+    allowed-origins:
+      - https://borsibaar.zapto.org
+      - http://localhost:3000
+      - http://193.40.157.19
+  frontend:
+    url:
+      - https://borsibaar.zapto.org
+      - http://193.40.157.19
+
+server:
+  forward-headers-strategy: framework
