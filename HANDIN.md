@@ -49,7 +49,7 @@
 - `<to_be_added>`
 
 ### Mahdiyeh Sepehrar (@sepehrar)
-- `<to_be_added>`
+- refactored BarStationController
 
 ---
 
