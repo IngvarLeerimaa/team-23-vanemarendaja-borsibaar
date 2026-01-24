@@ -32,7 +32,7 @@
 
 ### Ingvar Leerimaa (@IngvarLeerimaa)
 - Repository setup
-- Initial mock up files
+- Created git conflic with Mahdiyeh Sepehrar
 - `<to_be_added>`
 
 ### Andrii Lytvyn (@andrewlytvyn)
