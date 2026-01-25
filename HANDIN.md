@@ -68,7 +68,6 @@ Resolved by: @olgatenison
 ### Andrii Lytvyn (@andrewlytvyn)
 
 - Code review participation
-- Branch `who-is-teamlead-feature` (test/learning branch)
 - Planing and implementation
 
 ### Bohdan Podziubanchuk (@Danbog32)
