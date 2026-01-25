@@ -1,17 +1,20 @@
 # Team Information
 
+## Team Name
+**Team 23** <i>- to be determined</i>
+
 ## Team 23
-  <img src="./img/Team23.png" width="200">
+<img src="./img/Team23.png" width="200">
 
 ## Team Members
 
-| Name | GitHub Username | Role                         |
-|------|-----------------|------------------------------|
+| Name                   | GitHub Username                                      | Role                         |
+| ---------------------- | ---------------------------------------------------- | ---------------------------- |
 | Ingvar-Vilmar Leerimaa | [@IngvarLeerimaa](https://github.com/IngvarLeerimaa) | Contributor/Repository Owner |
-| Andrii Lytvyn | [@andrewlytvyn](https://github.com/andrewlytvyn) | Contributor                  |
-| Bohdan Podziubanchuk | [@Danbog32](https://github.com/Danbog32) | Contributor                  |
-| Olga Tenison | [@olgatenison](https://github.com/olgatenison) | Contributor                  |
-| Mahdiyeh Sepehrar | [@sepehrar](https://github.com/sepehrar) | Contributor                  |
+| Andrii Lytvyn          | [@andrewlytvyn](https://github.com/andrewlytvyn)     | Contributor                  |
+| Bohdan Podziubanchuk   | [@Danbog32](https://github.com/Danbog32)             | Contributor                  |
+| Olga Tenison           | [@olgatenison](https://github.com/olgatenison)       | Contributor                  |
+| Mahdiyeh Sepehrar      | [@sepehrar](https://github.com/sepehrar)             | Contributor                  |
 
 **Team Lead / Integrator:** [Ingvar-V. Leerimaa](https://github.com/IngvarLeerimaa)
 
@@ -24,15 +27,15 @@
 We follow a prefix-based branch naming convention for clarity.<br>
 Reference: [Git Branch Naming Conventions 2025](https://medium.com/@jaychu259/git-branch-naming-conventions-2025-the-ultimate-guide-for-developers-5f8e0b3bb9f7)
 
-| Prefix | Usage | Example |
-|--------|-------|---------|
-| `feature/` | New functionality | `feature/dark-mode-toggle` |
-| `fix/` | Bug fixes | `fix/login-button-error` |
-| `hotfix/` | Critical production fixes | `hotfix/payment-processing-issue` |
-| `refactor/` | Code restructuring (no new features) | `refactor/auth-module` |
-| `docs/` | Documentation updates | `docs/api-v2-update` |
-| `test/` | Test-related changes | `test/unit-coverage-improvement` |
-| `chore/` | Maintenance tasks | `chore/update-deps-2025` |
+| Prefix      | Usage                                | Example                           |
+| ----------- | ------------------------------------ | --------------------------------- |
+| `feature/`  | New functionality                    | `feature/dark-mode-toggle`        |
+| `fix/`      | Bug fixes                            | `fix/login-button-error`          |
+| `hotfix/`   | Critical production fixes            | `hotfix/payment-processing-issue` |
+| `refactor/` | Code restructuring (no new features) | `refactor/auth-module`            |
+| `docs/`     | Documentation updates                | `docs/api-v2-update`              |
+| `test/`     | Test-related changes                 | `test/unit-coverage-improvement`  |
+| `chore/`    | Maintenance tasks                    | `chore/update-deps-2025`          |
 
 ### Development Process
 
@@ -41,10 +44,10 @@ Reference: [Git Branch Naming Conventions 2025](https://medium.com/@jaychu259/gi
 3. **Develop** - Make multiple meaningful commits with clear messages
 4. **Push regularly** - Push your branch to GitHub frequently
 5. **Open a Pull Request** - Create a PR into `develop` with a clear description:
-    - **Why:** Link to issue or explain the motivation for the change
-    - **What:** Summarize what was changed
-    - **How to test:** Steps to verify the change works (if applicable)
-    - **Evidence:** Screenshots for UI changes, or test results if applicable
+   - **Why:** Link to issue or explain the motivation for the change
+   - **What:** Summarize what was changed
+   - **How to test:** Steps to verify the change works (if applicable)
+   - **Evidence:** Screenshots for UI changes, or test results if applicable
 6. **Code Review** - At least one team member must review and approve
 7. **Merge** - Use the appropriate merge strategy (see below)
 8. **Cleanup** - Merged branches are automatically deleted
@@ -57,10 +60,10 @@ Reference: [Git Branch Naming Conventions 2025](https://medium.com/@jaychu259/gi
 
 ### Branch Structure
 
-| Branch | Purpose | Protection |
-|--------|---------|------------|
-| `main` | Production-ready code | 2 approvals required |
-| `develop` | Integration branch for features | 1 approval required |
+| Branch    | Purpose                         | Protection           |
+| --------- | ------------------------------- | -------------------- |
+| `main`    | Production-ready code           | 2 approvals required |
+| `develop` | Integration branch for features | 1 approval required  |
 
 ### Pull Request Rules
 
@@ -90,6 +93,7 @@ feature/xxx  →  develop  →  main
 ### Code Review Guidelines
 
 Reviewers should check for:
+
 - Code correctness and functionality
 - Readability and maintainability
 - Adherence to project conventions
@@ -99,23 +103,26 @@ Reviewers should check for:
 
 ## Merge Strategies Used
 
-*This section documents the merge strategies used during this assignment.*
+_This section documents the merge strategies used during this assignment._
 
 ### Strategy 1: Regular Merge Commit
+
 - **PR:** `<to_be_added>`
 - **Why:** Preserves complete commit history of the feature branch. Good for larger features where individual commits provide valuable context.
 
 ### Strategy 2: Squash Merge
+
 - **PR:** `<to_be_added>`
 - **Why:** Combines all commits into a single commit, keeping `main` history clean. Ideal for small features or when feature branch has many "work in progress" commits.
 
 ### Strategy 3: Rebase Merge (if used)
+
 - **PR:** `<to_be_added>`
 - **Why:** Creates a linear history by replaying commits on top of `main`. Useful when you want clean history without merge commits.
 
 ### Problems Encountered
 
-*Document any issues faced during merging:*
+_Document any issues faced during merging:_
 
 - [Describe any merge conflicts, failed CI builds, or other problems]
 - [How they were resolved]
