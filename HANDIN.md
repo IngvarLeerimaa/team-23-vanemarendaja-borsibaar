@@ -67,8 +67,7 @@
 - To keep the frontend aligned with the backend domain model (no invented enums).
 
 ### Mahdiyeh Sepehrar (@sepehrar)
-
-- `<to_be_added>`
+- refactored BarStationController
 
 ---
 
