@@ -1,10 +1,8 @@
-# Team Information
+# Team 23
 
-## Team Name
-**Team 23** <i>- to be determined</i>
+---
 
-## Team 23
-<img src="./img/Team23.png" width="200">
+<img src="./img/Team23.png" width="400">
 
 ## Team Members
 
@@ -20,6 +18,7 @@
 
 **Mentor:** Bahdan Yanovich
 
+---
 ## Team Workflow
 
 ### Branch Naming Convention
@@ -74,7 +73,6 @@ Reference: [Git Branch Naming Conventions 2025](https://medium.com/@jaychu259/gi
 - CI/CD build must pass before merging (deploy step is currently skipped when `.env` credentials are not present)
 
 ### Development Flow
-
 ```
 feature/xxx  →  develop  →  main
      ↑             ↑          ↑
@@ -107,30 +105,26 @@ _This section documents the merge strategies used during this assignment._
 
 ### Strategy 1: Regular Merge Commit
 
-- **PR:** `<to_be_added>`
-- **Why:** Preserves complete commit history of the feature branch. Good for larger features where individual commits provide valuable context.
+- **PRs:** #5 (Feature/refactoring homework mahdiyeh sepehrar), #6 (Add error handling to BarStationController)
+- **Why:** Preserved complete commit history of the feature branches. These PRs had meaningful individual commits that provide valuable context for understanding the development process and conflict resolution.
 
 ### Strategy 2: Squash Merge
 
-- **PR:** `<to_be_added>`
-- **Why:** Combines all commits into a single commit, keeping `main` history clean. Ideal for small features or when feature branch has many "work in progress" commits.
-
-### Strategy 3: Rebase Merge (if used)
-
-- **PR:** `<to_be_added>`
-- **Why:** Creates a linear history by replaying commits on top of `main`. Useful when you want clean history without merge commits.
+- **PRs:** #3 (Feature/inventory typing), #4 (Docs/Add git-homework)
+- **Why:** Combined all commits into single commits, keeping the `develop` branch history clean. These branches had multiple work-in-progress commits that were not individually meaningful.
 
 ### Problems Encountered
 
-_Document any issues faced during merging:_
-
-- [Describe any merge conflicts, failed CI builds, or other problems]
-- [How they were resolved]
+- **GitHub personal access token expired:** Unable to push to github branches due to expired personal access token.
+- **Merge conflict between PR #5 and PR #6:** Both PRs modified `BarStationController.java` — one added a helper method, the other added error handling. Resolved by combining both approaches and ensuring the code compiled and worked correctly.
+- **Documentation conflicts in PR #3:** HANDIN.md and TEAM.md had concurrent updates. Resolved by keeping both changes in HANDIN.md and accepting the incoming version for TEAM.md.
+- **Spotless formatting conflicts:** Code formatting differences caused additional merge conflicts. Resolved by running Spotless after merging to ensure consistent formatting.
+- **Local build issues:** Application failed to start locally due to missing PostgreSQL/environment variables, but CI pipeline passed using H2 test database.
 
 ---
 
 ## Notes
 
-- [Repository](https://github.com/IngvarLeerimaa/vanemarendaja-borsibaar)
+- [Repository](https://github.com/IngvarLeerimaa/team-23-vanemarendaja-borsibaar)
 - Assignment Deadline: 26.01.2026
 - Homework assignment instructions available at [./homework/Git Homework.pdf](https://github.com/IngvarLeerimaa/team-23-vanemarendaja-borsibaar/blob/develop/homework/Git%20Homework.pdf)
