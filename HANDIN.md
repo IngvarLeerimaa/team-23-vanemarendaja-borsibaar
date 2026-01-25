@@ -58,6 +58,7 @@
 - Checked which `transactionType` values the backend actually returns and updated the frontend types/UI  
   (removed unused `SALE`, show negative `ADJUSTMENT` as red).
 - Normalized numeric fields because the API can return numbers as strings.
+- Resolved merge conflicts: in HANDIN.md I kept both changes, and in TEAM.md I kept the incoming version
 
 #### Why
 
