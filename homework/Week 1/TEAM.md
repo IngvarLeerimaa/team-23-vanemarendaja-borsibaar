@@ -2,7 +2,7 @@
 
 ---
 
-<img src="./img/Team23.png" width="400">
+<img src="../../img/Team23.png" width="400">
 
 ## Team Members
 
