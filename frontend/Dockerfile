@@ -11,7 +11,7 @@ COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 
 # Copy source and build
-COPY frontend/ .
+COPY frontend . .
 # Next.js picks NEXT_PUBLIC_* client vars at build time
 RUN npm run build
 
@@ -20,10 +20,15 @@ FROM node:20-alpine AS runner
 ENV NODE_ENV=production
 WORKDIR /app
 
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
 # Copy the minimal standalone build
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
+
+USER nextjs
 
 EXPOSE 3000
 CMD ["node", "server.js"]
