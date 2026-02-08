@@ -9,7 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io
   # GitHub repo owner must be lowercase for GHCR
-  IMAGE_PREFIX: ghcr.io/${{ github.repository_owner }}/borsibaar
+  IMAGE_PREFIX: ghcr.io/ingvarleerimaa/borsibaar
 
 jobs:
   # ──────────────────────────────────────────────
