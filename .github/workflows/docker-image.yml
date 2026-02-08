@@ -19,17 +19,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       # ── Backend checks ──
       - name: Set up JDK 21
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
       - name: Cache Maven dependencies
-        uses: actions/cache@v6
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('backend/pom.xml') }}
@@ -46,12 +46,12 @@ jobs:
 
       # ── Frontend checks ──
       - name: Set up Node 20
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Cache npm dependencies
-        uses: actions/cache@v6
+        uses: actions/cache@v4
         with:
           path: frontend/node_modules
           key: ${{ runner.os }}-npm-${{ hashFiles('frontend/package-lock.json') }}
@@ -87,7 +87,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Log in to GitHub Container Registry
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -102,7 +102,7 @@ jobs:
 
       # ── Build backend image (push only on main) ──
       - name: Build backend image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v4
         with:
           context: ./backend
           file: ./backend/Dockerfile
@@ -115,7 +115,7 @@ jobs:
 
       # ── Build frontend image (push only on main) ──
       - name: Build frontend image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./frontend/Dockerfile
@@ -138,7 +138,7 @@ jobs:
     environment: production  # Optional: add manual approval in GitHub settings
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up SSH
         run: |
